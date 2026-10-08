@@ -40,9 +40,9 @@ Browse fresh groceries, fill your cart and pay securely online, with a separate 
 
 | Layer | Technologies |
 |-------|--------------|
-| **Frontend** | React 19, Vite, Tailwind CSS 4, React Router, Axios |
-| **Admin** | React 19, Vite, Tailwind CSS 4, Chart.js |
-| **Backend** | Node.js, Express 5, JWT, bcrypt, Multer |
+| **Frontend** | React 19, Vite, Tailwind CSS |
+| **Admin** | React 19, Vite, Tailwind CSS 4|
+| **Backend** | Node.js, Express 5, JWT|
 | **Database** | MongoDB Atlas with Mongoose |
 | **Payments** | Stripe Checkout |
 
