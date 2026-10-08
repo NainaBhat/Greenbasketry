@@ -2,141 +2,144 @@
 
 # 🛒 GreenBasketry
 
-### A full-stack online grocery shopping platform
-
-Browse fresh groceries, fill your cart and pay securely online, with a separate admin panel to manage products and orders.
+### Full-stack online grocery store with Stripe payments and an admin dashboard
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Express_5-339933?logo=node.js&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white)
-![Stripe](https://img.shields.io/badge/Payments-Stripe-635BFF?logo=stripe&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Stripe](https://img.shields.io/badge/Stripe-Checkout-635BFF?logo=stripe&logoColor=white)
 
 </div>
 
----
-
 ## 📖 About
 
-**GreenBasketry** is an e-commerce web application for buying groceries online. It is made up of three parts: a customer-facing **storefront**, a **REST API** backend, and an **admin dashboard**. Customers can browse products, manage a cart and check out with Stripe. Admins can manage the product catalogue and track orders.
+GreenBasketry is a MERN-stack e-commerce app for buying groceries online. Customers browse products, fill a cart and pay with **Stripe** or **Cash on Delivery**. Store admins manage products and move orders through the fulfilment pipeline from a separate panel.
+
+| App | Purpose | URL |
+|---|---|---|
+| 🛍️ Storefront | Customer shop (React, Vite, Tailwind) | `localhost:5173` |
+| 🧑‍💼 Admin Panel | Products and orders (React, Vite, Tailwind) | `localhost:5174` |
+| ⚙️ Backend API | Auth, payments, data (Node, Express, MongoDB) | `localhost:4000` |
 
 ## ✨ Features
 
-### 🛍️ Customer Storefront
-- User registration and login with JWT authentication
-- Browse products by category with a clean, responsive layout
-- Add, update and remove items in the cart (cart saved per user)
-- Secure checkout powered by **Stripe**
-- Order history and payment verification
-- Contact page
+**Customers**
+- Sign up and log in (JWT auth, bcrypt-hashed passwords)
+- Browse products by category: Fruits, Vegetables, Dairy, Beverages, Snacks, Seafood, Bakery, Meat
+- Cart saved per user in the database
+- Pay online with Stripe Checkout or choose Cash on Delivery
+- Order history with live order and payment status
+- Contact page with an enquiry form
+
+**Admin**
+- Add products with image upload, and delete them
+- View all orders with customer details, items and totals
+- Update order status: Pending → Processing → Shipped → Delivered (or Cancelled)
+- Filter orders by status, with summary cards
+
+**Engineering highlights**
+- Prices and tax calculated **server-side**, so the client can't tamper with totals
+- Stripe payments **verified on the server** before an order is marked Paid
+- Protected API routes, restricted CORS, secrets kept in `.env`
+
+## 📸 Screenshots
+
+### 🛍️ Storefront
+| Home | Contact |
+|---|---|
+| <img src="screenshots/storefront/01-home.png" width="100%"> | <img src="screenshots/storefront/05-contact.png" width="100%"> |
+
+| Sign Up | Login |
+|---|---|
+| <img src="screenshots/storefront/03-signup.png" width="100%"> | <img src="screenshots/storefront/04-login.png" width="100%"> |
+
+| Cart | Checkout | My Orders |
+|---|---|---|
+| <img src="screenshots/storefront/06-cart.png" width="100%"> | <img src="screenshots/storefront/07-checkout.png" width="100%"> | <img src="screenshots/storefront/08-my-orders.png" width="100%"> |
+
+### 💳 Stripe Payment
+| Stripe Checkout | Payment Success |
+|---|---|
+| <img src="screenshots/stripe/01-stripe-checkout.png" width="100%"> | <img src="screenshots/stripe/02-payment-success.png" width="100%"> |
 
 ### 🧑‍💼 Admin Panel
-- Add new products with image upload
-- View and delete existing products
-- View all customer orders and update their status
-- Dashboard charts for quick insights
+| Add Product | Listed Items |
+|---|---|
+| <img src="screenshots/admin/01-add-item.png" width="100%"> | <img src="screenshots/admin/02-list-items.png" width="100%"> |
+
+| Orders | Updating Order Status |
+|---|---|
+| <img src="screenshots/admin/03-orders.png" width="100%"> | <img src="screenshots/admin/04-update-status.png" width="100%"> |
 
 ## 🧰 Tech Stack
 
-| Layer | Technologies |
-|-------|--------------|
-| **Frontend** | React 19, Vite, Tailwind CSS |
-| **Admin** | React 19, Vite, Tailwind CSS 4|
-| **Backend** | Node.js, Express 5, JWT|
-| **Database** | MongoDB Atlas with Mongoose |
-| **Payments** | Stripe Checkout |
-
-## 📁 Project Structure
-
-```
-GreenBasketry/
-├── frontend/     # Customer storefront (React + Vite)   → http://localhost:5173
-├── admin/        # Admin dashboard (React + Vite)       → http://localhost:5174
-└── backend/      # REST API (Express + MongoDB)         → http://localhost:4000
-    ├── config/       # Database connection
-    ├── controllers/  # Business logic
-    ├── middleware/   # Auth middleware
-    ├── models/       # Mongoose schemas
-    ├── routes/       # API routes
-    └── uploads/      # Product images
-```
+- **Frontend and Admin:** React 19, Vite, Tailwind CSS 4, React Router, Axios
+- **Backend:** Node.js, Express 5, Mongoose, JWT, bcrypt, Multer
+- **Database:** MongoDB Atlas
+- **Payments:** Stripe Checkout (test mode)
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (LTS)
-- A free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster
-- A [Stripe](https://stripe.com/) account (test mode)
+**Prerequisites:** [Node.js](https://nodejs.org/) LTS, a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster, a [Stripe](https://stripe.com/) account (test mode).
 
-### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR-USERNAME/greenbasketry.git
-cd greenbasketry
+git clone https://github.com/NainaBhat/Greenbasketry.git
+cd Greenbasketry
 ```
 
-### 2. Set up the backend
+**1. Backend**
 ```bash
 cd backend
 npm install
 ```
-Create a `uploads` folder inside `backend`, then create a `.env` file:
+Create an empty `uploads` folder inside `backend`, then add `backend/.env`:
 ```env
 PORT=4000
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+JWT_SECRET=your_long_random_secret
 STRIPE_SECRET_KEY=sk_test_your_stripe_key
 FRONTEND_URL=http://localhost:5173
 ```
-Start the server:
 ```bash
 npm start
 ```
 
-### 3. Run the storefront
+**2. Storefront** (new terminal)
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-### 4. Run the admin panel
+**3. Admin panel** (new terminal, start after the storefront)
 ```bash
 cd admin
 npm install
 npm run dev
 ```
 
-### 5. Open the apps
-| App | URL |
-|-----|-----|
-| Storefront | http://localhost:5173 |
-| Admin Panel | http://localhost:5174 |
-| API | http://localhost:4000 |
+Open `http://localhost:5173` (shop) and `http://localhost:5174` (admin). The database starts empty, so add a few products from the admin panel first.
 
-> 💳 **Test payment:** use card `4242 4242 4242 4242` with any future expiry date and any CVC.
+**Test payment:** card `4242 4242 4242 4242`, any future expiry, any 3-digit CVC. No real money is charged.
 
 ## 🔌 API Overview
 
 | Route | Purpose |
-|-------|---------|
+|---|---|
 | `/api/user` | Register and login |
-| `/api/items` | Product management |
-| `/api/cart` | Cart operations (protected) |
-| `/api/orders` | Place and manage orders, payment confirmation |
+| `/api/items` | Product list, add, delete |
+| `/api/cart` | Cart operations (JWT required) |
+| `/api/orders` | Place orders, confirm Stripe payments, list and update orders |
 
-## 🔮 Future Improvements
-- Product search and filters
-- Delivery tracking and notifications
+## 🗺️ Roadmap
 - Admin authentication and roles
-- Deployment on Render / Vercel
-
-## 📸 Screenshots
-
-*Add screenshots of the home page, cart, checkout and admin panel here.*
-
----
+- Product search and filters
+- Stripe webhooks and email notifications
+- Cloud deployment (Render and Vercel)
 
 <div align="center">
 
+**Maintained by Naina Bhat** · [GitHub](https://github.com/NainaBhat)
 
 </div>
