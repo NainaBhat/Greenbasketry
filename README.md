@@ -2,7 +2,7 @@
 
 # 🛒 GreenBasketry
 
-### Full-stack online grocery store with Stripe payments and an admin dashboard
+### Full-stack online grocery store with secure payments and an admin dashboard
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
