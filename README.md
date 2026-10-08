@@ -2,13 +2,14 @@
 
 # 🛒 GreenBasketry
 
-### Full-stack online grocery store with secure payments and an admin dashboard
+### A full-stack online grocery shopping platform
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-Express_5-339933?logo=node.js&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-Checkout-635BFF?logo=stripe&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+
 
 </div>
 
@@ -25,7 +26,7 @@ GreenBasketry is a MERN-stack e-commerce app for buying groceries online. Custom
 ## ✨ Features
 
 **Customers**
-- Sign up and log in (JWT auth, bcrypt-hashed passwords)
+- Sign up and log in 
 - Browse products by category: Fruits, Vegetables, Dairy, Beverages, Snacks, Seafood, Bakery, Meat
 - Cart saved per user in the database
 - Pay online with Stripe Checkout or choose Cash on Delivery
@@ -38,10 +39,31 @@ GreenBasketry is a MERN-stack e-commerce app for buying groceries online. Custom
 - Update order status: Pending → Processing → Shipped → Delivered (or Cancelled)
 - Filter orders by status, with summary cards
 
-**Engineering highlights**
-- Prices and tax calculated **server-side**, so the client can't tamper with totals
-- Stripe payments **verified on the server** before an order is marked Paid
-- Protected API routes, restricted CORS, secrets kept in `.env`
+## 🧰 Tech Stack
+
+| Layer | Technologies |
+|-------|--------------|
+| **Frontend** | React 19, Vite, Tailwind CSS |
+| **Admin** | React 19, Vite, Tailwind CSS 4|
+| **Backend** | Node.js, Express 5, JWT|
+| **Database** | MongoDB Atlas with Mongoose |
+| **Payments** | Stripe Checkout |
+
+## 📁 Project Structure
+
+```
+GreenBasketry/
+├── frontend/     # Customer storefront (React + Vite)   → http://localhost:5173
+├── admin/        # Admin dashboard (React + Vite)       → http://localhost:5174
+└── backend/      # REST API (Express + MongoDB)         → http://localhost:4000
+    ├── config/       # Database connection
+    ├── controllers/  # Business logic
+    ├── middleware/   # Auth middleware
+    ├── models/       # Mongoose schemas
+    ├── routes/       # API routes
+    └── uploads/      # Product images
+```
+
 
 ## 📸 Screenshots
 
@@ -72,12 +94,6 @@ GreenBasketry is a MERN-stack e-commerce app for buying groceries online. Custom
 |---|---|
 | <img src="screenshots/admin/03-orders.png" width="100%"> | <img src="screenshots/admin/04-update-status.png" width="100%"> |
 
-## 🧰 Tech Stack
-
-- **Frontend and Admin:** React 19, Vite, Tailwind CSS 4, React Router, Axios
-- **Backend:** Node.js, Express 5, Mongoose, JWT, bcrypt, Multer
-- **Database:** MongoDB Atlas
-- **Payments:** Stripe Checkout (test mode)
 
 ## 🚀 Getting Started
 
@@ -126,20 +142,18 @@ Open `http://localhost:5173` (shop) and `http://localhost:5174` (admin). The dat
 ## 🔌 API Overview
 
 | Route | Purpose |
-|---|---|
+|-------|---------|
 | `/api/user` | Register and login |
-| `/api/items` | Product list, add, delete |
-| `/api/cart` | Cart operations (JWT required) |
-| `/api/orders` | Place orders, confirm Stripe payments, list and update orders |
+| `/api/items` | Product management |
+| `/api/cart` | Cart operations (protected) |
+| `/api/orders` | Place and manage orders, payment confirmation |
 
-## 🗺️ Roadmap
-- Admin authentication and roles
+## 🔮 Future Improvements
 - Product search and filters
-- Stripe webhooks and email notifications
+- Delivery tracking and notifications
+- Admin authentication and roles
 - Cloud deployment (Render and Vercel)
 
 <div align="center">
-
-**Maintained by Naina Bhat** · [GitHub](https://github.com/NainaBhat)
 
 </div>
